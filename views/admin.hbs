@@ -1,0 +1,51 @@
+<a href="/" class="link">Вернуться на главную</a>
+<div class="admin">
+  <div class="left-panel">
+    <ul>
+      <li>Меню</li>
+    </ul>
+  </div>
+  <div class="right-panel">
+    <div class="admin-top-menu">
+      <h3>Верхнее меню</h3>
+
+        {{#if menuItems.length}}
+        {{#each menuItems}}
+        <div class="menuItems-wrapper">
+          <table>
+            <tr>
+              <th>Текст</th>
+              <th>Ссылка</th>
+              <th>Картинка</th>
+            </tr>
+            <tr>
+              <td>{{text}}</td>
+              <td>{{link}}</td>
+              <td>{{img}}</td>
+            </tr>
+          </table>
+        <form action="/admin/topmenuremove" method="POST">
+          <input type="hidden" name="id" value="{{id}}">
+          <button>Удалить пункт меню</button>
+        </form>
+        </div>
+        {{/each}}
+        {{else}}
+          <p>Меню пустое</p>
+        {{/if}}
+      </form>
+      <p>Добавить меню</p>
+        <form action="/admin/topmenuadd" method="POST">
+        <div class="menuItems-wrapper">
+          <label for="text">Текст меню</label>
+          <input id ="text" name="text" type="text">
+          <label for="link">url ссылки</label>
+          <input id ="link" name="link" type="text">
+          <label for="img">путь картинки</label>
+          <input id ="img" name="img" type="text">
+        </div>
+        <button class="btn-submit" type="submit">Добавить</button>
+      </form>
+    </div>
+  </div>
+</div>
